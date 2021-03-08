@@ -1,0 +1,28 @@
+--- aidsen.hpp	2021-03-08 20:26:54.046083820 +0100
++++ aidsen.hpp	2021-03-08 20:26:47.381933385 +0100
+@@ -125,8 +125,8 @@
+ //   Jarosław Wiosna (github:JaroslawWiosna)
+ //   Danil Kolumbet (github:kolumb)
+ 
+-#ifndef AIDS_HPP_
+-#define AIDS_HPP_
++#ifndef AIDSEN_HPP_
++#define AIDSEN_HPP_
+ 
+ #include <cassert>
+ #include <cctype>
+@@ -136,7 +136,7 @@
+ #include <cstdlib>
+ #include <cstring>
+ 
+-namespace aids
++namespace aidsen
+ {
+     ////////////////////////////////////////////////////////////
+     // ALLOCATORS
+@@ -1272,4 +1272,4 @@
+     }
+ }
+ 
+-#endif  // AIDS_HPP_
++#endif  // AIDSEN_HPP_
