@@ -19,6 +19,7 @@ Op<float> ops[] = {
     {"*"_sv, [](float a, float b){return a * b;}},
     {"/"_sv, [](float a, float b){return a / b;}},
     {"%"_sv, [](float a, float b){return mod(a, b);}},
+    {"^"_sv, [](float a, float b){return pow(a, b);}},
 };
 
 constexpr int ops_size = sizeof(ops) / sizeof(ops[0]);
@@ -69,6 +70,14 @@ int main(int argc, char *argv[]) {
     {
         auto rpn = sv_to_rpn("78 20 %"_sv);
         assert(18.0f == evaluate(&rpn));
+    }
+    {
+        auto rpn = sv_to_rpn("2 3 ^"_sv);
+        assert(8.0f == evaluate(&rpn));
+    }
+    {
+        auto rpn = sv_to_rpn("4 0.5 ^"_sv);
+        assert(2.0f == evaluate(&rpn));
     }
 
     Args args{argc, argv};
