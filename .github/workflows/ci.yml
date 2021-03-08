@@ -12,6 +12,9 @@ jobs:
       - name: tests
         run: |
           make tests
+      - name: coverage
+        run: |
+          make coverage
         env:
           CC: gcc
           CXX: g++
@@ -25,6 +28,9 @@ jobs:
       - name: tests
         run: |
           make tests
+      - name: coverage
+        run: |
+          make coverage
         env:
           CC: clang
           CXX: clang++
