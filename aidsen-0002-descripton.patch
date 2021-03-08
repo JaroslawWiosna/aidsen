@@ -1,0 +1,15 @@
+--- aidsen.hpp	2021-03-08 20:22:35.011236300 +0100
++++ aidsen.hpp	2021-03-08 20:22:15.435794400 +0100
+@@ -22,6 +22,12 @@
+ //
+ // ============================================================
+ //
++// aidsen — AIDSEN_VERSION_PLACEHOLDER — overbloated flavour of aids
++//
++// https://github.com/JaroslawWiosna/aidsen
++//
++// ============================================================
++//
+ // aids — 1.1.0 — std replacement for C++. Designed to aid developers
+ // to a better programming experience.
+ //
