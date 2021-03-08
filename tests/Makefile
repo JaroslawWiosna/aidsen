@@ -1,5 +1,5 @@
 CXXFLAGS=-I../ -std=c++17 -Wall -fno-exceptions -ggdb -O0 -fprofile-arcs -ftest-coverage
-LIBS=-lgcov -coverage -lc
+LIBS=-lgcov -coverage -lc -lm
 
 .PHONY: run
 run: rpn
