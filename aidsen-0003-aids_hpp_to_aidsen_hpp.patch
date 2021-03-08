@@ -1,5 +1,5 @@
---- aidsen.hpp	2021-03-08 20:26:54.046083820 +0100
-+++ aidsen.hpp	2021-03-08 20:26:47.381933385 +0100
+--- aidsen.hpp	2021-03-08 20:42:04.342630541 +0100
++++ aidsen.hpp	2021-03-08 20:42:00.677453079 +0100
 @@ -125,8 +125,8 @@
  //   Jarosław Wiosna (github:JaroslawWiosna)
  //   Danil Kolumbet (github:kolumb)
@@ -20,6 +20,15 @@
  {
      ////////////////////////////////////////////////////////////
      // ALLOCATORS
+@@ -278,7 +278,7 @@
+ #define DEFER_1(x, y) x##y
+ #define DEFER_2(x, y) DEFER_1(x, y)
+ #define DEFER_3(x)    DEFER_2(x, __COUNTER__)
+-#define defer(code)   auto DEFER_3(_defer_) = ::aids::defer_func([&](){code;})
++#define defer(code)   auto DEFER_3(_defer_) = ::aidsen::defer_func([&](){code;})
+ 
+     ////////////////////////////////////////////////////////////
+     // MAYBE
 @@ -1272,4 +1272,4 @@
      }
  }
