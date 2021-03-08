@@ -4,8 +4,23 @@ using namespace aidsen;
 
 struct Rpn {
     Stack<String_View> stack{};
-
 };
+
+template <typename T>
+struct Op {
+    String_View op{};
+    // https://stackoverflow.com/a/840504
+    T (*pfun)(T,T){};
+};
+
+Op<float> ops[] = {
+    {"+"_sv, [](float a, float b){return a + b;}},
+    {"-"_sv, [](float a, float b){return a - b;}},
+    {"*"_sv, [](float a, float b){return a * b;}},
+    {"/"_sv, [](float a, float b){return a / b;}},
+};
+
+constexpr int ops_size = sizeof(ops) / sizeof(ops[0]);
 
 float evaluate(Rpn *rpn) {
     while (not rpn->stack.empty()) {
@@ -16,14 +31,10 @@ float evaluate(Rpn *rpn) {
         } else {
             auto fst = evaluate(rpn);
             auto snd = evaluate(rpn);
-            if ("+"_sv == curr) {
-                return snd + fst;
-            } else if ("-"_sv == curr) {
-                return snd - fst;
-            } else if ("*"_sv == curr) {
-                return snd * fst;
-            } else if ("/"_sv == curr) {
-                return snd / fst;
+            for (int i{}; i < ops_size; ++i) {
+                if (ops[i].op == curr) {
+                    return ops[i].pfun(snd, fst);
+                }
             }
         }
     }
