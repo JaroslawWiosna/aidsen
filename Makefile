@@ -20,3 +20,8 @@ patch: aidsen-modified.hpp
 .PHONY: tests
 tests:
 	(cd tests && make)
+
+.PHONY: coverage
+coverage:
+	(cd tests && make coverage)
+

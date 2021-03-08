@@ -1,1 +1,6 @@
 rpn
+
+coverage.info
+html-coverage/
+rpn.gcda
+rpn.gcno
