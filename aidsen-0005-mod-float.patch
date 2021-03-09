@@ -1,0 +1,23 @@
+--- aidsen.hpp	2021-03-09 14:17:57.781170290 +0100
++++ aidsen.hpp	2021-03-09 14:17:46.098522730 +0100
+@@ -135,6 +135,7 @@
+ #include <cstdio>
+ #include <cstdlib>
+ #include <cstring>
++#include <math.h>
+ 
+ namespace aidsen
+ {
+@@ -249,6 +250,12 @@
+         return (a % b + b) % b;
+     }
+ 
++    template <>
++    float mod(float a, float b)
++    {
++        return fmodf((fmodf(a, b) + b), b);
++    }
++
+     template <typename T>
+     void swap(T *a, T *b)
+     {

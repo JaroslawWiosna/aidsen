@@ -18,5 +18,10 @@ patch: aidsen-modified.hpp
 	sed -i 's/+++ aidsen-modified.hpp/+++ aidsen.hpp/g' new.patch
 
 .PHONY: tests
-tests:
+tests: aidsen.hpp
 	(cd tests && make)
+
+.PHONY: coverage
+coverage: aidsen.hpp
+	(cd tests && make coverage)
+
