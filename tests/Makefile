@@ -2,9 +2,10 @@ CXXFLAGS=-I../ -std=c++17 -Wall -fno-exceptions -ggdb -O0 -fprofile-arcs -ftest-
 LIBS=-lgcov -coverage -lc -lm
 
 .PHONY: run
-run: rpn
+run: rpn sizeof
 	./rpn "2 3 +"
 	./rpn "5 6 + 10 *"
+	./sizeof
 
 .PHONY: coverage
 coverage: run
@@ -15,4 +16,7 @@ coverage: run
 
 rpn: rpn.cpp ../aidsen.hpp
 	$(CXX) $(CXXFLAGS) -o rpn rpn.cpp $(LIBS)
+
+sizeof: sizeof.cpp ../aidsen.hpp
+	$(CXX) $(CXXFLAGS) -o sizeof sizeof.cpp $(LIBS)
 

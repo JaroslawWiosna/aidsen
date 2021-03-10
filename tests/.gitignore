@@ -1,6 +1,7 @@
 rpn
+sizeof
 
 coverage.info
 html-coverage/
-rpn.gcda
-rpn.gcno
+*.gcda
+*.gcno
