@@ -1,6 +1,7 @@
 rpn
 sizeof
 future
+shared_ptr
 
 coverage.info
 html-coverage/
