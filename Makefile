@@ -19,7 +19,7 @@ patch: aidsen-modified.hpp
 
 .PHONY: tests
 tests: aidsen.hpp
-	(cd tests && make)
+	(cd tests && make -j2)
 
 .PHONY: coverage
 coverage: aidsen.hpp
