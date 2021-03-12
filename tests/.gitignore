@@ -2,6 +2,7 @@ rpn
 sizeof
 future
 shared_ptr
+list
 
 coverage.info
 html-coverage/
