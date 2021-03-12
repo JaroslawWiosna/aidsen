@@ -1,0 +1,62 @@
+--- aidsen.hpp	2021-03-12 21:29:47.059625277 +0100
++++ aidsen.hpp	2021-03-12 21:29:44.100561732 +0100
+@@ -1311,6 +1311,59 @@
+     {
+         destroy(stack.da);
+     }
++
++    ////////////////////////////////////////////////////////////
++    // Double-linked list
++    ////////////////////////////////////////////////////////////
++
++    template <typename Item>
++    struct List {
++        struct Node {
++            Item item{};
++            Node *next{};
++            Node *prev{};
++        };
++        Node *head{};
++        Node *tail{};
++
++        void print() {
++            Node *curr{head};
++            while (curr != nullptr) {
++                ::aidsen::print(stdout, curr->item, ' ');
++                curr = curr->next;
++            }
++            println(stdout);
++        }
++
++        void push_back(Item that) {
++            if (nullptr == head && nullptr == tail) {
++                head = (Node*)malloc(sizeof(Node));
++                head->item = that;
++                tail = head;
++            } else {
++                assert(nullptr == tail->next);
++                tail->next = (Node*)malloc(sizeof(Node));
++                tail->next->item = that;
++                tail->next->prev = tail;
++                tail = tail->next;
++            }
++        }
++
++        void push_front(Item that) {
++            if (nullptr == head && nullptr == tail) {
++                head = (Node*)malloc(sizeof(Node));
++                head->item = that;
++                tail = head;
++            } else {
++                assert(nullptr == head->prev);
++                head->prev = (Node*)malloc(sizeof(Node));
++                head->prev->item = that;
++                head->prev->next = head;
++                head = head->prev;
++            }
++        }
++    };
++
+ }
+ 
+ #endif  // AIDSEN_HPP_
