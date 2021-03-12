@@ -2,13 +2,14 @@ CXXFLAGS=-I../ -std=c++17 -Wall -fno-exceptions -ggdb -O0 -fprofile-arcs -ftest-
 LIBS=-lgcov -coverage -lc -lm
 
 .PHONY: run
-run: rpn sizeof future shared_ptr list
+run: rpn sizeof future shared_ptr list sv
 	./rpn "2 3 +"
 	./rpn "5 6 + 10 *"
 	./sizeof
 	./future
 	./shared_ptr
 	./list
+	./sv
 
 .PHONY: coverage
 coverage: run

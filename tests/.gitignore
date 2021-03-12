@@ -3,6 +3,7 @@ sizeof
 future
 shared_ptr
 list
+sv
 
 coverage.info
 html-coverage/
