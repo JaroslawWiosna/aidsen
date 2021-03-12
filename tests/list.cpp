@@ -23,14 +23,8 @@ struct List {
         if (nullptr == node) {
             node = (Node*)malloc(sizeof(Node));
             node->item = that;
-            println(stdout, "\tnode->item == ", node->item);
         } else {
-            Node *curr = node->next;
-            if (nullptr == curr) {
-                node->next = (Node*)malloc(sizeof(Node));
-                node->next->item = that;
-                return;
-            }
+            Node *curr = node;
             while (nullptr != curr->next) {
                 curr = curr->next;
             }
