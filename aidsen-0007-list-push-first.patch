@@ -1,0 +1,34 @@
+--- aidsen.hpp	2021-03-12 21:39:11.100738512 +0100
++++ aidsen.hpp	2021-03-12 21:39:06.289635187 +0100
+@@ -1335,11 +1335,17 @@
+             println(stdout);
+         }
+ 
++        void push_first(Item that) {
++            assert(nullptr == head);
++            assert(nullptr == tail);
++            head = (Node*)malloc(sizeof(Node));
++            head->item = that;
++            tail = head;
++        }
++
+         void push_back(Item that) {
+             if (nullptr == head && nullptr == tail) {
+-                head = (Node*)malloc(sizeof(Node));
+-                head->item = that;
+-                tail = head;
++                return push_first(that);
+             } else {
+                 assert(nullptr == tail->next);
+                 tail->next = (Node*)malloc(sizeof(Node));
+@@ -1351,9 +1357,7 @@
+ 
+         void push_front(Item that) {
+             if (nullptr == head && nullptr == tail) {
+-                head = (Node*)malloc(sizeof(Node));
+-                head->item = that;
+-                tail = head;
++                return push_first(that);
+             } else {
+                 assert(nullptr == head->prev);
+                 head->prev = (Node*)malloc(sizeof(Node));
