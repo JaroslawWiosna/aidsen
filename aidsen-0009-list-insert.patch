@@ -1,0 +1,41 @@
+--- aidsen.hpp	2021-03-13 18:40:42.108366890 +0100
++++ aidsen.hpp	2021-03-13 18:40:37.456334255 +0100
+@@ -1366,6 +1367,38 @@
+                 head = head->prev;
+             }
+         }
++
++        ssize_t size() const {
++            ssize_t result{};
++            Node *curr = head;
++            while (nullptr != curr) {
++                curr = curr->next;
++                result++;
++            }
++            return result;
++        };
++
++        using Index = int;
++        Node *at(Index index) {
++            assert((ssize_t)index < size());
++            Node *result = head;
++            while (index--) {
++                result = result->next;
++            }
++            return result;
++        }
++
++        //inserts before
++        void insert(Index index, Item item) {
++            auto *curr = at(index);
++            auto *curr_prev = curr->prev;
++            auto new_node = (Node*)malloc(sizeof(Node));
++            new_node->item = item;
++            new_node->prev = curr_prev;
++            new_node->next = curr;
++            curr_prev->next = new_node;
++            curr->prev = new_node;
++        }
+     };
+ 
+ }
