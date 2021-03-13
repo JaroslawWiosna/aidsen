@@ -2,10 +2,14 @@ CXXFLAGS=-I../ -std=c++17 -Wall -fno-exceptions -ggdb -O0 -fprofile-arcs -ftest-
 LIBS=-lgcov -coverage -lc -lm
 
 .PHONY: run
-run: rpn sizeof
+run: rpn sizeof future shared_ptr list sv
 	./rpn "2 3 +"
 	./rpn "5 6 + 10 *"
 	./sizeof
+	./future
+	./shared_ptr
+	./list
+	./sv
 
 .PHONY: coverage
 coverage: run
@@ -14,9 +18,6 @@ coverage: run
 	genhtml --branch-coverage -o html-coverage coverage.info 
 #	python -m webbrowser html-coverage/index.html
 
-rpn: rpn.cpp ../aidsen.hpp
-	$(CXX) $(CXXFLAGS) -o rpn rpn.cpp $(LIBS)
-
-sizeof: sizeof.cpp ../aidsen.hpp
-	$(CXX) $(CXXFLAGS) -o sizeof sizeof.cpp $(LIBS)
+%: %.cpp ../aidsen.hpp
+	$(CXX) $(CXXFLAGS) -o $@ $< $(LIBS) -lpthread
 

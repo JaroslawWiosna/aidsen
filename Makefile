@@ -4,13 +4,13 @@ aidsen.hpp: $(wildcard *.patch) 3rd_party/aids.hpp
 	git apply aidsen-*.patch
 
 .PHONY: copy
-copy:
+copy: aidsen.hpp
 	cp aidsen.hpp aidsen-modified.hpp
 
 .PHONY: patch
 patch: aidsen-modified.hpp
-	echo It is assumed that you copied `aidsen.hpp` to `aidsen-modified.hpp`
-	echo and you modified the latter one
+	@echo It is assumed that you copied aidsen.hpp to aidsen-modified.hpp
+	@echo and you modified the latter one
 	rm -f aidsen.hpp
 	cp 3rd_party/aids.hpp aidsen.hpp
 	git apply aidsen-*.patch
@@ -19,7 +19,7 @@ patch: aidsen-modified.hpp
 
 .PHONY: tests
 tests: aidsen.hpp
-	(cd tests && make)
+	(cd tests && make -j2)
 
 .PHONY: coverage
 coverage: aidsen.hpp
