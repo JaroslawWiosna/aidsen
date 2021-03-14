@@ -6,6 +6,7 @@ list
 sv
 priority_queue
 sprint
+utf8
 
 coverage.info
 html-coverage/
