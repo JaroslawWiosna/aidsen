@@ -58,6 +58,36 @@ struct Priority_Queue {
     }
 };
 
+struct Person {
+    String_View name{};
+    int height{};
+    int weight{};
+};
+
+Person people[] = {
+    {"Alice"_sv,   160,  50},
+    {"Bob"_sv,     180, 100},
+    {"Charlie"_sv, 170,  60},
+    {"Diana"_sv,   190,  59},
+};
+constexpr int people_size = sizeof(people) / sizeof(people[0]);
+
+struct Less_By_Height {
+    constexpr bool operator()(const Person &lhs, const Person &rhs) const {
+        return lhs.height > rhs.height;
+    }
+};
+
+struct Less_By_Weight {
+    constexpr bool operator()(const Person &lhs, const Person &rhs) const {
+        return lhs.weight > rhs.weight;
+    }
+};
+
+void print1(FILE *stream, Person person) {
+    print(stream, person.name, ' ', person.height, ' ', person.weight);
+}
+
 int main() {
 
     Priority_Queue<float> pq{};
@@ -91,6 +121,26 @@ int main() {
         println(stdout, "size == ", pqg.list.size(), ' ');
         while (not pqg.empty()) {
             println(stdout, pqg.pop(), ' ');
+        }
+        println(stdout);
+    }
+    {
+        Priority_Queue<Person, Less_By_Height> person_queue{};
+        for (int i{}; i < people_size; ++i) {
+            person_queue.push(people[i]);
+        }    
+        while (not person_queue.empty()) {
+            println(stdout, person_queue.pop(), ' ');
+        }
+        println(stdout);
+    }
+    {
+        Priority_Queue<Person, Less_By_Weight> person_queue{};
+        for (int i{}; i < people_size; ++i) {
+            person_queue.push(people[i]);
+        }    
+        while (not person_queue.empty()) {
+            println(stdout, person_queue.pop(), ' ');
         }
         println(stdout);
     }
