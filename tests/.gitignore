@@ -5,6 +5,7 @@ shared_ptr
 list
 sv
 priority_queue
+sprint
 
 coverage.info
 html-coverage/
