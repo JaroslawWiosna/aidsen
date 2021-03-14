@@ -4,6 +4,7 @@ future
 shared_ptr
 list
 sv
+priority_queue
 
 coverage.info
 html-coverage/

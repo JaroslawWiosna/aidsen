@@ -1,0 +1,20 @@
+--- aidsen.hpp	2021-03-14 08:15:54.694653673 +0100
++++ aidsen.hpp	2021-03-14 08:15:52.708607197 +0100
+@@ -1391,11 +1391,15 @@
+         void insert(Index index, Item item) {
+             auto *curr = at(index);
+             auto *curr_prev = curr->prev;
+-            auto new_node = (Node*)malloc(sizeof(Node));
++            auto *new_node = (Node*)malloc(sizeof(Node));
+             new_node->item = item;
+             new_node->prev = curr_prev;
+             new_node->next = curr;
+-            curr_prev->next = new_node;
++            if (curr_prev) {
++                curr_prev->next = new_node;
++            } else {
++                head = new_node;
++            }
+             curr->prev = new_node;
+         }
+     };
