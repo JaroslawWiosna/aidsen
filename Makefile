@@ -23,5 +23,5 @@ tests: aidsen.hpp
 
 .PHONY: coverage
 coverage: aidsen.hpp
-	(cd tests && make coverage)
+	(cd tests && make -j2 coverage)
 
