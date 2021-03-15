@@ -2,8 +2,24 @@
 
 using namespace aidsen;
 
+// rfc1321
 void md5(String_View in, String_Buffer *out) {
+    constexpr uint32_t A = 0x67452301;
+    constexpr uint32_t B = 0xefcdab89;
+    constexpr uint32_t C = 0x98badcfe;
+    constexpr uint32_t D = 0x10325476;
 
+    // F(X,Y,Z) = XY v not(X) Z
+    // G(X,Y,Z) = XZ v Y not(Z)
+    // H(X,Y,Z) = X xor Y xor Z
+    // I(X,Y,Z) = Y xor (X v not(Z))
+     
+    constexpr auto F = [](uint32_t X, uint32_t Y, uint32_t Z){return (X & Y) | ((~X) & Z);};  
+    constexpr auto G = [](uint32_t X, uint32_t Y, uint32_t Z){return (X & Z) | (Y & (~Z));};  
+    constexpr auto H = [](uint32_t X, uint32_t Y, uint32_t Z){return X ^ Y ^ Z;};  
+    constexpr auto I = [](uint32_t X, uint32_t Y, uint32_t Z){return Y ^ (X | (~Z));};  
+
+    panic("Not implemented. Yet.");
 }
 
 int main() {
