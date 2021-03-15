@@ -1,7 +1,7 @@
 aidsen.hpp: $(wildcard *.patch) 3rd_party/aids.hpp
 	rm -f aidsen.hpp
 	cp 3rd_party/aids.hpp aidsen.hpp
-	git apply aidsen-*.patch
+	git apply --verbose aidsen-*.patch
 
 .PHONY: copy
 copy: aidsen.hpp
