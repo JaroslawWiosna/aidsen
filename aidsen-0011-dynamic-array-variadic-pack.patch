@@ -1,0 +1,15 @@
+--- aidsen.hpp	2021-03-18 19:36:41.092339829 +0100
++++ aidsen.hpp	2021-03-18 19:36:38.084271658 +0100
+@@ -629,6 +629,12 @@
+             size += 1;
+         }
+ 
++        template <typename... Rest>
++        void push(T item, Rest... rest) {
++            push(item);
++            push(rest...);
++        }
++
+         void concat(const T *items, size_t items_count)
+         {
+             while (size + 1 > capacity) {
